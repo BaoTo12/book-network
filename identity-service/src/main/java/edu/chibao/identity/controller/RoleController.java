@@ -1,18 +1,16 @@
-package com.devteria.identity.controller;
+package edu.chibao.identity.controller;
 
-import java.util.List;
-
-import org.springframework.web.bind.annotation.*;
-
-import com.devteria.identity.dto.request.ApiResponse;
-import com.devteria.identity.dto.request.RoleRequest;
-import com.devteria.identity.dto.response.RoleResponse;
-import com.devteria.identity.service.RoleService;
-
+import edu.chibao.identity.dto.request.ApiResponse;
+import edu.chibao.identity.dto.request.RoleRequest;
+import edu.chibao.identity.dto.response.RoleResponse;
+import edu.chibao.identity.service.RoleService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/roles")

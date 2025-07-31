@@ -1,9 +1,8 @@
-package com.devteria.identity.configuration;
+package edu.chibao.identity.configuration;
 
-import java.text.ParseException;
-import java.util.Objects;
-import javax.crypto.spec.SecretKeySpec;
-
+import com.nimbusds.jose.JOSEException;
+import edu.chibao.identity.dto.request.IntrospectRequest;
+import edu.chibao.identity.service.AuthenticationService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.oauth2.jose.jws.MacAlgorithm;
 import org.springframework.security.oauth2.jwt.Jwt;
@@ -12,9 +11,9 @@ import org.springframework.security.oauth2.jwt.JwtException;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.stereotype.Component;
 
-import com.devteria.identity.dto.request.IntrospectRequest;
-import com.devteria.identity.service.AuthenticationService;
-import com.nimbusds.jose.JOSEException;
+import javax.crypto.spec.SecretKeySpec;
+import java.text.ParseException;
+import java.util.Objects;
 
 @Component
 public class CustomJwtDecoder implements JwtDecoder {

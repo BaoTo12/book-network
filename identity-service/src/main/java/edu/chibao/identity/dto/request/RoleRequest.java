@@ -1,9 +1,9 @@
-package com.devteria.identity.dto.request;
-
-import java.util.Set;
+package edu.chibao.identity.dto.request;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.util.Set;
 
 @Data
 @NoArgsConstructor

@@ -1,19 +1,17 @@
-package com.devteria.identity.service;
+package edu.chibao.identity.service;
 
-import java.util.List;
-
-import org.springframework.stereotype.Service;
-
-import com.devteria.identity.dto.request.PermissionRequest;
-import com.devteria.identity.dto.response.PermissionResponse;
-import com.devteria.identity.entity.Permission;
-import com.devteria.identity.mapper.PermissionMapper;
-import com.devteria.identity.repository.PermissionRepository;
-
+import edu.chibao.identity.dto.request.PermissionRequest;
+import edu.chibao.identity.dto.response.PermissionResponse;
+import edu.chibao.identity.entity.Permission;
+import edu.chibao.identity.mapper.PermissionMapper;
+import edu.chibao.identity.repository.PermissionRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor

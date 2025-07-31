@@ -1,18 +1,16 @@
-package com.devteria.identity.controller;
+package edu.chibao.identity.controller;
 
-import java.util.List;
-
-import org.springframework.web.bind.annotation.*;
-
-import com.devteria.identity.dto.request.ApiResponse;
-import com.devteria.identity.dto.request.PermissionRequest;
-import com.devteria.identity.dto.response.PermissionResponse;
-import com.devteria.identity.service.PermissionService;
-
+import edu.chibao.identity.dto.request.ApiResponse;
+import edu.chibao.identity.dto.request.PermissionRequest;
+import edu.chibao.identity.dto.response.PermissionResponse;
+import edu.chibao.identity.service.PermissionService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/permissions")

@@ -2,6 +2,9 @@ package com.devteria.identity.controller;
 
 import java.time.LocalDate;
 
+import edu.chibao.identity.dto.request.UserCreationRequest;
+import edu.chibao.identity.dto.response.UserResponse;
+import edu.chibao.identity.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
@@ -16,9 +19,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import com.devteria.identity.dto.request.UserCreationRequest;
-import com.devteria.identity.dto.response.UserResponse;
-import com.devteria.identity.service.UserService;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 

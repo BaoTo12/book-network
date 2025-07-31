@@ -1,21 +1,18 @@
-package com.devteria.identity.controller;
+package edu.chibao.identity.controller;
 
-import java.util.List;
-
+import edu.chibao.identity.dto.request.ApiResponse;
+import edu.chibao.identity.dto.request.UserCreationRequest;
+import edu.chibao.identity.dto.request.UserUpdateRequest;
+import edu.chibao.identity.dto.response.UserResponse;
+import edu.chibao.identity.service.UserService;
 import jakarta.validation.Valid;
-
-import org.springframework.web.bind.annotation.*;
-
-import com.devteria.identity.dto.request.ApiResponse;
-import com.devteria.identity.dto.request.UserCreationRequest;
-import com.devteria.identity.dto.request.UserUpdateRequest;
-import com.devteria.identity.dto.response.UserResponse;
-import com.devteria.identity.service.UserService;
-
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/users")

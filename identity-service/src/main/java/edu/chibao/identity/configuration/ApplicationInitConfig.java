@@ -1,24 +1,22 @@
-package com.devteria.identity.configuration;
+package edu.chibao.identity.configuration;
 
-import java.util.HashSet;
-
+import edu.chibao.identity.constant.PredefinedRole;
+import edu.chibao.identity.entity.Role;
+import edu.chibao.identity.entity.User;
+import edu.chibao.identity.repository.RoleRepository;
+import edu.chibao.identity.repository.UserRepository;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
+import lombok.experimental.NonFinal;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.devteria.identity.constant.PredefinedRole;
-import com.devteria.identity.entity.Role;
-import com.devteria.identity.entity.User;
-import com.devteria.identity.repository.RoleRepository;
-import com.devteria.identity.repository.UserRepository;
-
-import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
-import lombok.experimental.FieldDefaults;
-import lombok.experimental.NonFinal;
-import lombok.extern.slf4j.Slf4j;
+import java.util.HashSet;
 
 @Configuration
 @RequiredArgsConstructor
