@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.5</version>
+		<version>3.5.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.chibao</groupId>
@@ -145,10 +145,10 @@
 				</executions>
 				<configuration>
 					<excludes>
-						<exclude>com/devteria/identity/dto/**</exclude>
-						<exclude>com/devteria/identity/entity/**</exclude>
-						<exclude>com/devteria/identity/mapper/**</exclude>
-						<exclude>com/devteria/identity/configuration/**</exclude>
+						<exclude>edu/chibao/identity/dto/**</exclude>
+						<exclude>edu/chibao/identity/entity/**</exclude>
+						<exclude>edu/chibao/identity/mapper/**</exclude>
+						<exclude>edu/chibao/identity/configuration/**</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
