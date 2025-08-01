@@ -20,8 +20,8 @@ public class UserProfileController {
         return userProfileService.createUserProfile(request);
     }
 
-    @GetMapping("/${profileId}")
-    public UserProfileResponse getUserProfileById(@RequestParam String profileId){
+    @GetMapping("/{profileId}")
+    public UserProfileResponse getUserProfileById(@PathVariable String profileId){
         return userProfileService.getUserProfileById(profileId);
     }
 }
