@@ -112,10 +112,10 @@
 				</executions>
 				<configuration>
 					<excludes>
-						<exclude>com/devteria/profile/dto/**</exclude>
-						<exclude>com/devteria/profile/entity/**</exclude>
-						<exclude>com/devteria/profile/mapper/**</exclude>
-						<exclude>com/devteria/profile/configuration/**</exclude>
+						<exclude>edu/chibao/profile/dto/**</exclude>
+						<exclude>edu/chibao/profile/entity/**</exclude>
+						<exclude>edu/chibao/profile/mapper/**</exclude>
+						<exclude>edu/chibao/profile/configuration/**</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
