@@ -1,1 +1,19 @@
-spring.application.name=api-gateway
+server:
+  port: 8888
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: identity_service
+          uri: http://localhost:8080
+          predicates:
+            - Path=/identity/**
+
+logging:
+  level:
+    org.springframework.cloud.gateway.route: DEBUG
+    org.springframework.cloud.gateway.handler: DEBUG
+    root: INFO
