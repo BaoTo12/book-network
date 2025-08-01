@@ -20,7 +20,7 @@ public class UserProfileService {
     UserProfileRepository userProfileRepository;
     UserProfileMapper mapper;
 
-    UserProfileResponse createUserProfile(UserProfileCreationRequest request) {
+   public UserProfileResponse createUserProfile(UserProfileCreationRequest request) {
         UserProfile userProfile = mapper.toUserProfile(request);
         userProfile = userProfileRepository.save(userProfile);
         return mapper.toUserProfileResponse(userProfile);
