@@ -11,6 +11,7 @@ import edu.chibao.identity.exception.ErrorCode;
 import edu.chibao.identity.mapper.UserMapper;
 import edu.chibao.identity.repository.RoleRepository;
 import edu.chibao.identity.repository.UserRepository;
+import edu.chibao.identity.repository.httpclient.ProfileClient;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -32,6 +33,7 @@ public class UserService {
     RoleRepository roleRepository;
     UserMapper userMapper;
     PasswordEncoder passwordEncoder;
+    ProfileClient profileClient;
 
     public UserResponse createUser(UserCreationRequest request) {
         if (userRepository.existsByUsername(request.getUsername())) throw new AppException(ErrorCode.USER_EXISTED);
@@ -43,8 +45,12 @@ public class UserService {
         roleRepository.findById(PredefinedRole.USER_ROLE).ifPresent(roles::add);
 
         user.setRoles(roles);
+        user = userRepository.save(user);
 
-        return userMapper.toUserResponse(userRepository.save(user));
+        // Create User Profile when user is created successfully
+//        profileClient.createUserProfile()
+
+        return userMapper.toUserResponse(user);
     }
 
     public UserResponse getMyInfo() {
