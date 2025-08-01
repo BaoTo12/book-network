@@ -1,6 +1,7 @@
 package edu.chibao.identity.repository.httpclient;
 
 import edu.chibao.identity.dto.request.UserProfileCreationRequest;
+import edu.chibao.identity.dto.response.UserProfileResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +12,6 @@ public interface ProfileClient {
     // when call to this function open feign will make a call with post method, requestUrl = url + /users
     // and return Content-type: Application/json
     @PostMapping(value = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
-    Object createUserProfile(@RequestBody UserProfileCreationRequest request);
+    UserProfileResponse createUserProfile(@RequestBody UserProfileCreationRequest request);
 
 }
