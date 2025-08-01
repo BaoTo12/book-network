@@ -1,11 +1,19 @@
 package edu.chibao.api_gateway.cconfig;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import edu.chibao.api_gateway.dto.ApiResponse;
+import edu.chibao.api_gateway.service.IdentityService;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
@@ -17,8 +25,11 @@ import java.util.List;
 
 @Component
 @Slf4j
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class AuthenticationFilter implements GlobalFilter, Ordered {
-
+    IdentityService identityService;
+    ObjectMapper objectMapper;
 
     // ServerWebExchange is a reactive equivalent of HttpServletRequest/Response combined. It encapsulates:
     /*
@@ -35,7 +46,15 @@ public class AuthenticationFilter implements GlobalFilter, Ordered {
         if (CollectionUtils.isEmpty(authHeaders))
             return unauthenticated(exchange.getResponse());
         // Verify token
-        return chain.filter(exchange);
+        String token = authHeaders.getFirst().replace("Bearer ", "");
+        log.info("Token {}", token);
+
+        return identityService.introspect(token).flatMap(introspectToken -> {
+            if (introspectToken.getResult().isValid()) {
+                return chain.filter(exchange);
+            }
+            return unauthenticated(exchange.getResponse());
+        }).onErrorResume(throwable -> unauthenticated(exchange.getResponse()));
     }
 
     @Override
@@ -52,8 +71,18 @@ public class AuthenticationFilter implements GlobalFilter, Ordered {
      * 4. Access buffer factory for creating response data
      * */
     Mono<Void> unauthenticated(ServerHttpResponse response) {
-        String msg = "You are not authenticated";
+        ApiResponse<?> apiResponse = ApiResponse.builder()
+                .code(1401)
+                .message("You are not authenticated")
+                .build();
+        String body = null;
+        try {
+            body = objectMapper.writeValueAsString(apiResponse);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
         response.setStatusCode(HttpStatus.UNAUTHORIZED);
-        return response.writeWith(Mono.just(response.bufferFactory().wrap(msg.getBytes())));
+        response.getHeaders().add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
+        return response.writeWith(Mono.just(response.bufferFactory().wrap(body.getBytes())));
     }
 }
