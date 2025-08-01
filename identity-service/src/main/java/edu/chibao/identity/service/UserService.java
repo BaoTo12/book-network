@@ -50,7 +50,9 @@ public class UserService {
         user = userRepository.save(user);
 
         // Create User Profile when user is created successfully
-        var profileResponse = profileClient.createUserProfile(profileMapper.toUserProfileCreationRequest(request));
+        var profileRequest = profileMapper.toUserProfileCreationRequest(request);
+        profileRequest.setUserId(user.getId());
+        var profileResponse = profileClient.createUserProfile(profileRequest);
         System.out.println(profileResponse.toString());
 
 
