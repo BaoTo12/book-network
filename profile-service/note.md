@@ -83,3 +83,9 @@ Spring Data Neo4j provides an ==object-graph mapping (OGM)== layer that allows y
 - Auditing, Testing & Migrations
     - Enable auditing (createdBy, modifiedDate) via **@EnableNeo4jAuditing** on a config class
     - For testing, use **Testcontainers Neo4j plus** optional **Neo4j‑Migrations** to initialize clean data in tests or CI
+
+**Note**: when use neo4j with Docker and run command 
+```
+docker run --publish=7474:7474 --publish=7687:7687 -e 'NEO4J_AUTH=neo4j/secret' neo4j:5
+```
+the port 7474 is used for http user interface and has default username and password is neo4j & neo4j despite being set 'NEO4J_AUTH=neo4j/secret'
