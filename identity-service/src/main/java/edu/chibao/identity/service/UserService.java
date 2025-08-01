@@ -8,6 +8,7 @@ import edu.chibao.identity.entity.Role;
 import edu.chibao.identity.entity.User;
 import edu.chibao.identity.exception.AppException;
 import edu.chibao.identity.exception.ErrorCode;
+import edu.chibao.identity.mapper.ProfileMapper;
 import edu.chibao.identity.mapper.UserMapper;
 import edu.chibao.identity.repository.RoleRepository;
 import edu.chibao.identity.repository.UserRepository;
@@ -34,6 +35,7 @@ public class UserService {
     UserMapper userMapper;
     PasswordEncoder passwordEncoder;
     ProfileClient profileClient;
+    ProfileMapper profileMapper;
 
     public UserResponse createUser(UserCreationRequest request) {
         if (userRepository.existsByUsername(request.getUsername())) throw new AppException(ErrorCode.USER_EXISTED);
@@ -48,7 +50,9 @@ public class UserService {
         user = userRepository.save(user);
 
         // Create User Profile when user is created successfully
-//        profileClient.createUserProfile()
+        var profileResponse = profileClient.createUserProfile(profileMapper.toUserProfileCreationRequest(request));
+        System.out.println(profileResponse.toString());
+
 
         return userMapper.toUserResponse(user);
     }
