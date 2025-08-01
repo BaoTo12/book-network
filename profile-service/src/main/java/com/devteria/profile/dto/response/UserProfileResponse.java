@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor
 public class UserProfileResponse {
+    String id;
     String firstName;
     String lassName;
     LocalDate dob;
