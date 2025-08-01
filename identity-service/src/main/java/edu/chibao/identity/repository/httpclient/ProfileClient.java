@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface ProfileClient {
     // when call to this function open feign will make a call with post method, requestUrl = url + /users
     // and return Content-type: Application/json
-    @PostMapping(value = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/internal/users", produces = MediaType.APPLICATION_JSON_VALUE)
     UserProfileResponse createUserProfile(@RequestBody UserProfileCreationRequest request);
 
 }
