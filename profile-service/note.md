@@ -66,7 +66,20 @@ Using ==MATCH== clause
 - REMOVE deletes properties or labels: REMOVE p.temporary_flag
 
 #### Advanced Pattern Techniques
+
 ==Optional matching== becomes crucial when you want to find patterns that might not exist for every starting point. OPTIONAL MATCH works like a LEFT JOIN in SQL
+
 - MATCH (p:Person) OPTIONAL MATCH (p) -[:HAS_PHONE]-> (phone) finds all people and their phone numbers if they have them, but still returns people without phones
 - MATCH (p:Person) -[:Friend]->(f), (p) -[:COLLEAGUE]-> (f) finds people who are both friends and colleagues with the same person. The comma creates an implicit AND condition between patterns.
 
+## Spring Data Neo4j
+
+Spring Data Neo4j provides an ==object-graph mapping (OGM)== layer that allows you to work with Neo4j using familiar Java objects and Spring conventions.
+
+- Node entities represent the vertices in your graph, annotated with **_@Node_** ⛺
+- Relationship entities, marked with **_@RelationshipProperties_**, model the edges between nodes when you need to store properties on relationships themselves.
+- The **_@Relationship_** annotation defines how nodes connect to each other, specifying direction and relationship types.
+- Repository: The framework provides **_Neo4jRepository<T, ID>_** as a base interface, which includes common operations like findById, save, delete, and findAll
+- Auditing, Testing & Migrations
+    - Enable auditing (createdBy, modifiedDate) via **@EnableNeo4jAuditing** on a config class
+    - For testing, use **Testcontainers Neo4j plus** optional **Neo4j‑Migrations** to initialize clean data in tests or CI
