@@ -1,4 +1,4 @@
-package com.devteria.identity.configuration;
+package edu.chibao.identity.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

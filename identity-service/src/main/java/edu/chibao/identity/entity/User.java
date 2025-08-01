@@ -1,12 +1,11 @@
-package com.devteria.identity.entity;
+package edu.chibao.identity.entity;
+
+import jakarta.persistence.*;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
 import java.util.Set;
-
-import jakarta.persistence.*;
-
-import lombok.*;
-import lombok.experimental.FieldDefaults;
 
 @Getter
 @Setter

@@ -1,4 +1,32 @@
-package com.devteria.identity.service;
+package edu.chibao.identity.service;
+
+import com.nimbusds.jose.*;
+import com.nimbusds.jose.crypto.MACSigner;
+import com.nimbusds.jose.crypto.MACVerifier;
+import com.nimbusds.jwt.JWTClaimsSet;
+import com.nimbusds.jwt.SignedJWT;
+import edu.chibao.identity.dto.request.AuthenticationRequest;
+import edu.chibao.identity.dto.request.IntrospectRequest;
+import edu.chibao.identity.dto.request.LogoutRequest;
+import edu.chibao.identity.dto.request.RefreshRequest;
+import edu.chibao.identity.dto.response.AuthenticationResponse;
+import edu.chibao.identity.dto.response.IntrospectResponse;
+import edu.chibao.identity.entity.InvalidatedToken;
+import edu.chibao.identity.entity.User;
+import edu.chibao.identity.exception.AppException;
+import edu.chibao.identity.exception.ErrorCode;
+import edu.chibao.identity.repository.InvalidatedTokenRepository;
+import edu.chibao.identity.repository.UserRepository;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
+import lombok.experimental.NonFinal;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.text.ParseException;
 import java.time.Instant;
@@ -6,36 +34,6 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.StringJoiner;
 import java.util.UUID;
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
-
-import com.devteria.identity.dto.request.AuthenticationRequest;
-import com.devteria.identity.dto.request.IntrospectRequest;
-import com.devteria.identity.dto.request.LogoutRequest;
-import com.devteria.identity.dto.request.RefreshRequest;
-import com.devteria.identity.dto.response.AuthenticationResponse;
-import com.devteria.identity.dto.response.IntrospectResponse;
-import com.devteria.identity.entity.InvalidatedToken;
-import com.devteria.identity.entity.User;
-import com.devteria.identity.exception.AppException;
-import com.devteria.identity.exception.ErrorCode;
-import com.devteria.identity.repository.InvalidatedTokenRepository;
-import com.devteria.identity.repository.UserRepository;
-import com.nimbusds.jose.*;
-import com.nimbusds.jose.crypto.MACSigner;
-import com.nimbusds.jose.crypto.MACVerifier;
-import com.nimbusds.jwt.JWTClaimsSet;
-import com.nimbusds.jwt.SignedJWT;
-
-import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
-import lombok.experimental.FieldDefaults;
-import lombok.experimental.NonFinal;
-import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor

@@ -1,29 +1,27 @@
-package com.devteria.identity.service;
+package edu.chibao.identity.service;
 
-import java.util.HashSet;
-import java.util.List;
-
+import edu.chibao.identity.constant.PredefinedRole;
+import edu.chibao.identity.dto.request.UserCreationRequest;
+import edu.chibao.identity.dto.request.UserUpdateRequest;
+import edu.chibao.identity.dto.response.UserResponse;
+import edu.chibao.identity.entity.Role;
+import edu.chibao.identity.entity.User;
+import edu.chibao.identity.exception.AppException;
+import edu.chibao.identity.exception.ErrorCode;
+import edu.chibao.identity.mapper.UserMapper;
+import edu.chibao.identity.repository.RoleRepository;
+import edu.chibao.identity.repository.UserRepository;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.devteria.identity.constant.PredefinedRole;
-import com.devteria.identity.dto.request.UserCreationRequest;
-import com.devteria.identity.dto.request.UserUpdateRequest;
-import com.devteria.identity.dto.response.UserResponse;
-import com.devteria.identity.entity.Role;
-import com.devteria.identity.entity.User;
-import com.devteria.identity.exception.AppException;
-import com.devteria.identity.exception.ErrorCode;
-import com.devteria.identity.mapper.UserMapper;
-import com.devteria.identity.repository.RoleRepository;
-import com.devteria.identity.repository.UserRepository;
-
-import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
-import lombok.experimental.FieldDefaults;
-import lombok.extern.slf4j.Slf4j;
+import java.util.HashSet;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor

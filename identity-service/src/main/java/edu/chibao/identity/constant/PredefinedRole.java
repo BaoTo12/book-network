@@ -1,4 +1,4 @@
-package com.devteria.identity.constant;
+package edu.chibao.identity.constant;
 
 public class PredefinedRole {
     public static final String USER_ROLE = "USER";

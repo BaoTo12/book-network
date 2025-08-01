@@ -1,4 +1,4 @@
-package com.devteria.identity.exception;
+package edu.chibao.identity.exception;
 
 public class AppException extends RuntimeException {
 

@@ -1,10 +1,11 @@
-package com.devteria.identity.mapper;
+package edu.chibao.identity.mapper;
 
+import edu.chibao.identity.dto.request.PermissionRequest;
+import edu.chibao.identity.dto.response.PermissionResponse;
+import edu.chibao.identity.entity.Permission;
 import org.mapstruct.Mapper;
 
-import com.devteria.identity.dto.request.PermissionRequest;
-import com.devteria.identity.dto.response.PermissionResponse;
-import com.devteria.identity.entity.Permission;
+
 
 @Mapper(componentModel = "spring")
 public interface PermissionMapper {

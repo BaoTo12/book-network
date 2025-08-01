@@ -1,13 +1,12 @@
-package com.devteria.identity.entity;
-
-import java.util.Set;
+package edu.chibao.identity.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
-
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.util.Set;
 
 @Getter
 @Setter

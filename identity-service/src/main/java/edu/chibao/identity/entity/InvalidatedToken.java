@@ -1,12 +1,11 @@
-package com.devteria.identity.entity;
-
-import java.util.Date;
+package edu.chibao.identity.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.util.Date;
 
 @Getter
 @Setter

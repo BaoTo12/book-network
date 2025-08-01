@@ -1,13 +1,14 @@
-package com.devteria.identity.mapper;
+package edu.chibao.identity.mapper;
 
+import edu.chibao.identity.dto.request.UserCreationRequest;
+import edu.chibao.identity.dto.request.UserUpdateRequest;
+import edu.chibao.identity.dto.response.UserResponse;
+import edu.chibao.identity.entity.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
-import com.devteria.identity.dto.request.UserCreationRequest;
-import com.devteria.identity.dto.request.UserUpdateRequest;
-import com.devteria.identity.dto.response.UserResponse;
-import com.devteria.identity.entity.User;
+
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
