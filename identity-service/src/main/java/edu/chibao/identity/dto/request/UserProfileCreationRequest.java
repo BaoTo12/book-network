@@ -11,6 +11,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserProfileCreationRequest {
+    String userId;
     String firstName;
     String lassName;
     LocalDate dob;
