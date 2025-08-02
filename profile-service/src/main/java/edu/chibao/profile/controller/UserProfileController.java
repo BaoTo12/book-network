@@ -1,7 +1,7 @@
-package com.devteria.profile.controller;
+package edu.chibao.profile.controller;
 
-import com.devteria.profile.dto.response.UserProfileResponse;
-import com.devteria.profile.service.UserProfileService;
+import edu.chibao.profile.dto.response.UserProfileResponse;
+import edu.chibao.profile.service.UserProfileService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;

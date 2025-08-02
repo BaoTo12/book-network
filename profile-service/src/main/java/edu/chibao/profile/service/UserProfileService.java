@@ -1,11 +1,11 @@
-package com.devteria.profile.service;
+package edu.chibao.profile.service;
 
 
-import com.devteria.profile.dto.request.UserProfileCreationRequest;
-import com.devteria.profile.dto.response.UserProfileResponse;
-import com.devteria.profile.entity.UserProfile;
-import com.devteria.profile.mapper.UserProfileMapper;
-import com.devteria.profile.repo.UserProfileRepository;
+import edu.chibao.profile.dto.request.UserProfileCreationRequest;
+import edu.chibao.profile.dto.response.UserProfileResponse;
+import edu.chibao.profile.entity.UserProfile;
+import edu.chibao.profile.mapper.UserProfileMapper;
+import edu.chibao.profile.repo.UserProfileRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
