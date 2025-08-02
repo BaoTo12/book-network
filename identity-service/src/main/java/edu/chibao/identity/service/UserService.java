@@ -49,9 +49,10 @@ public class UserService {
         user.setRoles(roles);
         user = userRepository.save(user);
 
-        // Create User Profile when user is created successfully
+        // Create User Profile when the user is created successfully
         var profileRequest = profileMapper.toUserProfileCreationRequest(request);
         profileRequest.setUserId(user.getId());
+
         var profileResponse = profileClient.createUserProfile(profileRequest);
         System.out.println(profileResponse.toString());
 
