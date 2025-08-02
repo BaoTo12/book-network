@@ -1,4 +1,4 @@
-package edu.chibao.api_gateway.cconfig;
+package edu.chibao.api_gateway.config;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
