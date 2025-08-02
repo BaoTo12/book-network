@@ -1,6 +1,6 @@
-package com.devteria.profile.repo;
+package edu.chibao.profile.repo;
 
-import com.devteria.profile.entity.UserProfile;
+import edu.chibao.profile.entity.UserProfile;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.stereotype.Repository;
 

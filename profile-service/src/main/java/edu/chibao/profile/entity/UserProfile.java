@@ -1,4 +1,4 @@
-package com.devteria.profile.entity;
+package edu.chibao.profile.entity;
 
 import lombok.AccessLevel;
 import lombok.Getter;

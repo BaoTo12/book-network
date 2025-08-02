@@ -1,4 +1,4 @@
-package edu.chibao.api_gateway.cconfig;
+package edu.chibao.api_gateway.config;
 
 
 import edu.chibao.api_gateway.repo.IdentityClient;

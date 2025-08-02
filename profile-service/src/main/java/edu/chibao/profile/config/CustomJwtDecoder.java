@@ -1,12 +1,10 @@
-package edu.chibao.identity.configuration;
+package edu.chibao.profile.config;
 
 import com.nimbusds.jwt.SignedJWT;
-import edu.chibao.identity.service.AuthenticationService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.JwtException;
-import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.stereotype.Component;
 
 import java.text.ParseException;

@@ -1,8 +1,8 @@
-package com.devteria.profile.mapper;
+package edu.chibao.profile.mapper;
 
-import com.devteria.profile.dto.request.UserProfileCreationRequest;
-import com.devteria.profile.dto.response.UserProfileResponse;
-import com.devteria.profile.entity.UserProfile;
+import edu.chibao.profile.dto.request.UserProfileCreationRequest;
+import edu.chibao.profile.dto.response.UserProfileResponse;
+import edu.chibao.profile.entity.UserProfile;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
