@@ -6,12 +6,16 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 @FeignClient(name = "profile-service", url = "${app.service.profile}")
 public interface ProfileClient {
     // when call to this function open feign will make a call with post method, requestUrl = url + /users
     // and return Content-type: Application/json
     @PostMapping(value = "/internal/users", produces = MediaType.APPLICATION_JSON_VALUE)
-    UserProfileResponse createUserProfile(@RequestBody UserProfileCreationRequest request);
+    UserProfileResponse createUserProfile(
+            @RequestHeader("Authorization") String token,
+            @RequestBody UserProfileCreationRequest request
+    );
 
 }

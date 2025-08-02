@@ -1,6 +1,5 @@
-package edu.chibao.profile.validator;
+package edu.chibao.identity.validator;
 
-import edu.chibao.identity.validator.DobConstraint;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 

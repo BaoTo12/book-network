@@ -1,4 +1,4 @@
-package edu.chibao.profile.validator;
+package edu.chibao.identity.validator;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
