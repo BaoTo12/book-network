@@ -21,8 +21,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.util.HashSet;
 import java.util.List;
@@ -54,14 +52,8 @@ public class UserService {
         // Create User Profile when the user is created successfully
         var profileRequest = profileMapper.toUserProfileCreationRequest(request);
         profileRequest.setUserId(user.getId());
-        // get token of the current request
-        ServletRequestAttributes servletRequestAttributes =
-                (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 
-        assert servletRequestAttributes != null;
-        var authHeader = servletRequestAttributes.getRequest().getHeader("Authorization");
-        System.err.println(authHeader);
-        var profileResponse = profileClient.createUserProfile(authHeader, profileRequest);
+        var profileResponse = profileClient.createUserProfile(profileRequest);
         System.out.println(profileResponse.toString());
 
 
