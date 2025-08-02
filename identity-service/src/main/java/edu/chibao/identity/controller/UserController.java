@@ -22,7 +22,7 @@ import java.util.List;
 public class UserController {
     UserService userService;
 
-    @PostMapping
+    @PostMapping("/register")
     ApiResponse<UserResponse> createUser(@RequestBody @Valid UserCreationRequest request) {
         return ApiResponse.<UserResponse>builder()
                 .result(userService.createUser(request))
