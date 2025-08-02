@@ -9,8 +9,11 @@ import edu.chibao.profile.repo.UserProfileRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -27,11 +30,18 @@ public class UserProfileService {
     }
 
     @Transactional(readOnly = true)
-    public UserProfileResponse getUserProfileById(String id){
+    public UserProfileResponse getUserProfileById(String id) {
         UserProfile userProfile = userProfileRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("Profile not found with " + id)
         );
 
         return mapper.toUserProfileResponse(userProfile);
+    }
+
+    @Transactional(readOnly = true)
+    @PreAuthorize("hasRole('ADMIN')")
+    public List<UserProfileResponse> getAllProfiles() {
+        List<UserProfile> userProfile = userProfileRepository.findAll();
+        return userProfile.stream().map(mapper::toUserProfileResponse).toList();
     }
 }
