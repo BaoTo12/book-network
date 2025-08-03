@@ -1,0 +1,14 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name=notification-service
+  data:
+    mongodb:
+      uri: mongodb://root:root@localhost:27017/notification-service?authSource=admin
+
+sendgrid:
+  api-key:
+  from-email: baotochi87@gmail.com
+  from-name: Tô Chí Bảo
